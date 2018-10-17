@@ -73,7 +73,6 @@ public class ArchitectAgent extends GuiAgent {
                 return;
             default:
                 return;
-
         }
     }
 }
