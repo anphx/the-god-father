@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact name="the-god-father:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/the_god_father_jar</output-path>
+    <root id="root">
+      <element id="archive" name="the-god-father.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/src/manifests/META-INF/MANIFEST.MF" />
+        </element>
+        <element id="module-output" name="the-god-father" />
+      </element>
+      <element id="library" level="project" name="jade" />
+    </root>
+  </artifact>
+</component>
