@@ -13,25 +13,18 @@ public class ArchitectAgentGui {
 
     private ArchitectAgent myAgent;
     private JPanel mainPanel;
-    private JTable agentsList;
     private JTextField targetIP;
     private JTextField nbAgents;
-    private JButton sayHelloButton;
-    private JComboBox agentFilters;
-    private JButton terminateSelectedAgentButton;
-    private JSpinner timer;
-    private JButton resetTimerButton;
     private JButton btnCreate;
     private JTable agentStatus;
     private JButton terminateAllAgentsButton;
-    private JTextField agentToKill;
-    private JButton terminateThisAgentButton;
     private JButton restartAllAgentsButton;
-    private JButton restartRandomAgentsButton;
-    private JTextField textField2;
     private JTextField txtHost;
     private JTextField txtPort;
     private JPanel appPanel;
+    private JTextField targetPort;
+    private JTextField tickerPeriod;
+    private JTextField fbNr;
 
 
     public ArchitectAgentGui() {
@@ -46,6 +39,11 @@ public class ArchitectAgentGui {
             ge.addParameter(host);
             ge.addParameter(port);
             ge.addParameter(seedName);
+
+            ge.addParameter(targetIP.getText());
+            ge.addParameter(targetPort.getText());
+            ge.addParameter(tickerPeriod.getText());
+            ge.addParameter(fbNr.getText());
 
             myAgent.postGuiEvent(ge);
         });

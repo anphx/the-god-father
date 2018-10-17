@@ -25,14 +25,9 @@ public class ArchitectAgent extends GuiAgent {
         gui.setAgent(this);
         gui.frameInit();
 
-
         // Make this agent terminate
         //doDelete();
     }
-
-//    protected void onGuiEvent(GuiEvent ev) {
-//        RA1.setTitle("My Agent Name is: " + this.getName());
-//    }
 
     @Override
     protected void onGuiEvent(GuiEvent ge) {
@@ -48,6 +43,10 @@ public class ArchitectAgent extends GuiAgent {
                     String host = ge.getParameter(1).toString();
                     int port = Integer.parseInt(ge.getParameter(2).toString());
                     String seedName = ge.getParameter(3).toString();
+                    String serverHost = ge.getParameter(4).toString();
+                    String serverPort = ge.getParameter(5).toString();
+                    String tickerPeriod = ge.getParameter(6).toString();
+                    String fiboNb = ge.getParameter(7).toString();
 
                     Profile profile = new ProfileImpl(host, port, null);
                     profile.setParameter(Profile.GUI, "true");
@@ -56,15 +55,23 @@ public class ArchitectAgent extends GuiAgent {
                     jade.wrapper.AgentContainer cont = rt.createAgentContainer(profile);
 
                     for (int i=0; i<nbAgent; i++) {
-                        // TODO: Replace with a more useful agent
-                        System.out.println(">>>>>>>>>>>>>>> Starting up our Agent Smith...");
-                        AgentController a = cont.createNewAgent(seedName + "-" + i, HelloWorldAgent.class.getName(),null);
-                        a.start();
+                        try {
+                            System.out.println(">>>>>>>>>>>>>>> Starting up our Agent Smith...");
+                            // args: -host -port -tickerPeriod -fiboNb
+                            AgentController a = cont.createNewAgent(
+                                    seedName + "-" + i,
+                                    TcpRequestAgent.class.getName(),
+                                    new String[]{ serverHost, serverPort, tickerPeriod, fiboNb });
+                            a.start();
 
-                        System.out.print("Created agent: " + a.getName() +
-                                "====== on platform: " + cont.getPlatformName() +
-                                "============ in container: " + cont.getContainerName() + "\n");
-                        allAgents.add(a);
+//                        System.out.print("Created agent: " + a.getName() +
+//                                "====== on platform: " + cont.getPlatformName() +
+//                                "============ in container: " + cont.getContainerName() + "\n");
+                            allAgents.add(a);
+                            Thread.sleep(50);
+                        } catch (Exception e) {
+                            System.exit(-1);
+                        }
                     }
                 }
                 catch (Exception ex) {
