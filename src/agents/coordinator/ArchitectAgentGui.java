@@ -6,6 +6,8 @@ import jade.gui.GuiEvent;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.Date;
 import java.util.Vector;
 
@@ -18,13 +20,15 @@ public class ArchitectAgentGui {
     private JButton btnCreate;
     private JTable agentStatus;
     private JButton terminateAllAgentsButton;
-    private JButton restartAllAgentsButton;
     private JTextField txtHost;
     private JTextField txtPort;
     private JPanel appPanel;
     private JTextField targetPort;
     private JTextField tickerPeriod;
     private JTextField fbNr;
+    private JCheckBox isDebug;
+
+    public static Boolean isDebugging = false;
 
 
     public ArchitectAgentGui() {
@@ -46,6 +50,19 @@ public class ArchitectAgentGui {
             ge.addParameter(fbNr.getText());
 
             myAgent.postGuiEvent(ge);
+        });
+        terminateAllAgentsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                GuiEvent ge = new GuiEvent(this, Helpers.TERMINATE_AGENTS);
+                myAgent.postGuiEvent(ge);
+            }
+        });
+        isDebug.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                isDebugging = (e.getStateChange() == ItemEvent.SELECTED);
+            }
         });
     }
 

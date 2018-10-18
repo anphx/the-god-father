@@ -1,27 +1,24 @@
 package agents.coordinator;
 
-import jade.core.Agent;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
+import jade.core.Runtime;
 import jade.gui.GuiAgent;
 import jade.gui.GuiEvent;
-import jade.core.Runtime;
 import jade.wrapper.AgentContainer;
 import jade.wrapper.AgentController;
-import jade.wrapper.ContainerProxy;
+import jade.wrapper.StaleProxyException;
 
 import java.util.Vector;
 
 public class ArchitectAgent extends GuiAgent {
 
-    private Vector<AgentController> allAgents = new Vector();
+    private Vector<AgentContainer> allAgents = new Vector();
     private ArchitectAgentGui gui;
 
     protected void setup() {
-        System.out.println("Hello World! My name is " + getLocalName());
+        System.out.println("===========Agent " + getLocalName() + " is up and running!===============");
         gui = new ArchitectAgentGui();
-
-//        gui = new ArchitectAgentGui();
         gui.setAgent(this);
         gui.frameInit();
 
@@ -36,7 +33,6 @@ public class ArchitectAgent extends GuiAgent {
         switch (ge.getType()) {
             case Helpers.NEW_AGENTS:
                 // Starting a number of agents in the same container by default
-//                AgentContainer c = getContainerController();
                 try {
                     ArchitectAgentGui gui = (ArchitectAgentGui) ge.getSource();
                     int nbAgent = Integer.parseInt(ge.getParameter(0).toString());
@@ -54,30 +50,41 @@ public class ArchitectAgent extends GuiAgent {
                     System.out.println("Launching a whole in-process platform..." + profile);
                     jade.wrapper.AgentContainer cont = rt.createAgentContainer(profile);
 
-                    for (int i=0; i<nbAgent; i++) {
+                    for (int i = 0; i < nbAgent; i++) {
                         try {
-                            System.out.println(">>>>>>>>>>>>>>> Starting up our Agent Smith...");
                             // args: -host -port -tickerPeriod -fiboNb
                             AgentController a = cont.createNewAgent(
                                     seedName + "-" + i,
                                     TcpRequestAgent.class.getName(),
-                                    new String[]{ serverHost, serverPort, tickerPeriod, fiboNb });
+                                    new String[]{serverHost, serverPort, tickerPeriod, fiboNb});
                             a.start();
 
-//                        System.out.print("Created agent: " + a.getName() +
-//                                "====== on platform: " + cont.getPlatformName() +
-//                                "============ in container: " + cont.getContainerName() + "\n");
-                            allAgents.add(a);
+                            if (ArchitectAgentGui.isDebugging) {
+                                System.out.print(i + " - Created agent: " + a.getName() +
+                                "====== on platform: " + cont.getPlatformName() +
+                                "============ in container: " + cont.getContainerName() + "\n");
+                            }
+
+                            if (!allAgents.contains(cont)) allAgents.add(cont);
+
                             Thread.sleep(50);
                         } catch (Exception e) {
+                            System.out.println("FAILURE: " + e.getCause());
                             System.exit(-1);
                         }
                     }
-                }
-                catch (Exception ex) {
+                } catch (Exception ex) {
                     ex.printStackTrace();
                 }
                 return;
+            case Helpers.TERMINATE_AGENTS:
+                for (int i = 0; i < allAgents.size(); i++) {
+                    try {
+                        allAgents.elementAt(i).kill();
+                    } catch (StaleProxyException e) {
+                        e.printStackTrace();
+                    }
+                }
             default:
                 return;
         }

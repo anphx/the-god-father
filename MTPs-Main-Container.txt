@@ -1,1 +1,1 @@
-http://pub135-110.pub.ltu.se:7778/acc
+http://ans-macbook-pro:7778/acc
