@@ -18,7 +18,6 @@ public class ArchitectAgentGui {
     private JTextField targetIP;
     private JTextField nbAgents;
     private JButton btnCreate;
-    private JTable agentStatus;
     private JButton terminateAllAgentsButton;
     private JTextField txtHost;
     private JTextField txtPort;
