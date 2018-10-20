@@ -54,6 +54,11 @@ public class TcpRequestAgent extends Agent {
 
         public SendRequest(Agent a, int period) {
             super(a, period);
+            try {
+                server  = new Socket(targethost, port);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
         @Override
@@ -61,7 +66,6 @@ public class TcpRequestAgent extends Agent {
             try {
                 //Open socket to TCP server
 //                System.out.println("INFO:\t Opening socket to "+ targethost +":"+ port);
-                server = new Socket(targethost, port);
 //                System.out.println("INFO:\t Successfully opened socket to "+ targethost +":"+ port);
 
                 //write on the output stream (count of element in fibonacci series)
