@@ -1,13 +1,15 @@
 package agents.coordinator;
 
-import jade.core.Agent;
+import agents.utils.GraphPanel;
+import agents.utils.Helpers;
 import jade.gui.GuiEvent;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Vector;
 
@@ -25,9 +27,13 @@ public class ArchitectAgentGui {
     private JTextField targetPort;
     private JTextField tickerPeriod;
     private JTextField fbNr;
-    private JCheckBox isDebug;
+    private GraphPanel graph;
 
-    public static Boolean isDebugging = false;
+    private JFrame frame;
+
+    //    public static Boolean isDebugging = false;
+//    private int[] serverStatus;
+    Vector<Integer> serverStatus = new Vector<Integer>();
 
 
     public ArchitectAgentGui() {
@@ -50,6 +56,7 @@ public class ArchitectAgentGui {
 
             myAgent.postGuiEvent(ge);
         });
+
         terminateAllAgentsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -57,17 +64,25 @@ public class ArchitectAgentGui {
                 myAgent.postGuiEvent(ge);
             }
         });
-        isDebug.addItemListener(new ItemListener() {
-            @Override
-            public void itemStateChanged(ItemEvent e) {
-                isDebugging = (e.getStateChange() == ItemEvent.SELECTED);
-            }
-        });
+//        isDebug.addItemListener(e -> isDebugging = (e.getStateChange() == ItemEvent.SELECTED));
     }
 
     protected void frameInit() {
-        JFrame frame = new JFrame("a.p. The-God-Father Agency");
-        frame.setContentPane(this.appPanel);
+        frame = new JFrame("a.p. The-God-Father Agency");
+        JPanel content = new JPanel();
+        content.setLayout(new BorderLayout(2, 1));
+
+        graph = new GraphPanel(serverStatus);
+        graph.setPreferredSize(new Dimension(400, 400));
+
+        frame.setContentPane(content);
+        content.add(this.appPanel);
+        content.add(graph, BorderLayout.PAGE_END);
+
+//        frame.add(this.appPanel);
+//        frame.add(new GraphPanel());
+
+//        this.appPanel.add(new GraphPanel());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
@@ -77,13 +92,29 @@ public class ArchitectAgentGui {
         myAgent = a;
     }
 
+    public void updateHealthStatus(int health) {
+        serverStatus.add(health);
+        int size = serverStatus.size();
+
+        // Keep up to 50 latest values of health data
+        if (size >= 50) {
+            Integer[] temp = new Integer[]{serverStatus.elementAt(size-2), serverStatus.elementAt(size-1)};
+            serverStatus = new Vector<Integer>(Arrays.asList(temp));
+        }
+//        System.out.println(serverStatus);
+        graph = new GraphPanel(serverStatus);
+        graph.setPreferredSize(new Dimension(400, 400));
+        frame.getContentPane().add(graph, BorderLayout.PAGE_END);
+        frame.pack();
+
+//        graph.refresh(serverStatus);
+    }
+
 //    @Override
 //    public void actionPerformed(ActionEvent e) {
 //        // Fire gui event in agent
 //        // GuiEvent ge = new GuiEvent(this, NEW_ACCOUNT);
 //        // myAgent.postGuiEvent(ge);
 //    }
-
-    /* Get/Set controls */
 
 }

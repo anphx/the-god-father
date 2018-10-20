@@ -1,8 +1,10 @@
 package agents.coordinator;
 
+import agents.utils.Helpers;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
 import jade.core.Runtime;
+import jade.core.behaviours.Behaviour;
 import jade.gui.GuiAgent;
 import jade.gui.GuiEvent;
 import jade.wrapper.AgentContainer;
@@ -10,20 +12,30 @@ import jade.wrapper.AgentController;
 import jade.wrapper.StaleProxyException;
 
 import java.util.Vector;
+import java.util.logging.Logger;
 
 public class ArchitectAgent extends GuiAgent {
 
     private Vector<AgentContainer> allAgents = new Vector();
     private ArchitectAgentGui gui;
+    private Logger logger;
 
     protected void setup() {
-        System.out.println("===========Agent " + getLocalName() + " is up and running!===============");
         gui = new ArchitectAgentGui();
         gui.setAgent(this);
         gui.frameInit();
-
         // Make this agent terminate
         //doDelete();
+
+        logger = Helpers.getLogger("ArchitectAgent", "architectagent.log");
+
+        System.out.println("===========Agent " + getLocalName() + " is up and running!===============");
+        logger.info("===========Agent " + getLocalName() + " is up and running!===============");
+
+        ///////////////////////
+        // Add server health checking behaviour
+        Behaviour b = new HealthCheckBehaviour(this, 1000);
+        addBehaviour(b);
     }
 
     @Override
@@ -59,17 +71,16 @@ public class ArchitectAgent extends GuiAgent {
                                     new String[]{serverHost, serverPort, tickerPeriod, fiboNb});
                             a.start();
 
-                            if (ArchitectAgentGui.isDebugging) {
-                                System.out.print(i + " - Created agent: " + a.getName() +
-                                "====== on platform: " + cont.getPlatformName() +
-                                "============ in container: " + cont.getContainerName() + "\n");
-                            }
+                            logger.info(" - Created agent: " + i + " - " + a.getName() +
+                            "====== on platform: " + cont.getPlatformName() +
+                            "============ in container: " + cont.getContainerName() + "\n");
 
                             if (!allAgents.contains(cont)) allAgents.add(cont);
 
                             Thread.sleep(50);
                         } catch (Exception e) {
-                            System.out.println("FAILURE: " + e.getCause());
+//                            System.out.println("FAILURE: " + e.getCause());
+                            logger.throwing("ArchitectAgent", "onGuiEvent",e);
                             System.exit(-1);
                         }
                     }
@@ -88,5 +99,10 @@ public class ArchitectAgent extends GuiAgent {
             default:
                 return;
         }
+    }
+
+    public void updateHealthStatus(int health) {
+        // health is in % -> status of server
+        gui.updateHealthStatus(health);
     }
 }

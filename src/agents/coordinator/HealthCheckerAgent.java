@@ -7,8 +7,6 @@ import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.domain.FIPAException;
 
 import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
@@ -54,8 +52,8 @@ public class HealthCheckerAgent extends Agent {
 
         @Override
         protected void onTick() {
-            Health h =Health.getInstance();
-            System.out.println(h.getHealth());
+            Health h = Health.getInstance();
+//            System.out.println(h.getHealth());
         }
     }
 }

@@ -1,5 +1,6 @@
 package agents.coordinator;
 
+import agents.utils.Helpers;
 import jade.core.Agent;
 import jade.core.behaviours.TickerBehaviour;
 import jade.domain.DFService;
@@ -11,21 +12,23 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.logging.Logger;
 
 public class TcpRequestAgent extends Agent {
     Socket server = null;
-    String targethost = "Agent-classic-balancer-public-890787002.eu-west-3.elb.amazonaws.com";
-    BufferedReader in;
-    PrintWriter out;
-    int port = 1234;
+    private String targetHost = "Agent-classic-balancer-public-890787002.eu-west-3.elb.amazonaws.com";
+    private BufferedReader in;
+    private PrintWriter out;
+    private int port = 1234;
     private int tickerPeriod = 1000; //1sec
     private int fbNr = 10;
+    private Logger logger;
 
     protected void setup() {
         //Take host and port from argument
         Object[] args = getArguments();
         if (args != null && args.length >= 4) {
-            targethost = (String) args[0];
+            targetHost = (String) args[0];
             port = Integer.parseInt((String) args[1]);
             tickerPeriod = Integer.parseInt((String) args[2]);
             fbNr = Integer.parseInt((String) args[3]);
@@ -47,7 +50,11 @@ public class TcpRequestAgent extends Agent {
                     + e.getMessage());
             doDelete();
         }
+
+//        logger = Helpers.getLogger("TcpRequestAgent", "tcpagent.log");
         addBehaviour(new SendRequest(this, tickerPeriod));
+
+        // add logging
     }
 
     public class SendRequest extends TickerBehaviour {
@@ -55,7 +62,10 @@ public class TcpRequestAgent extends Agent {
         public SendRequest(Agent a, int period) {
             super(a, period);
             try {
-                server  = new Socket(targethost, port);
+//                System.out.println("INFO:\t Opening socket to "+ targetHost +":"+ port);
+//                logger.info("Opening socket to \"+ targetHost +\":\"+ port");
+                // open socket for this agent to connect to the TCP server
+                server  = new Socket(targetHost, port);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -64,20 +74,15 @@ public class TcpRequestAgent extends Agent {
         @Override
         protected void onTick() {
             try {
-                //Open socket to TCP server
-//                System.out.println("INFO:\t Opening socket to "+ targethost +":"+ port);
-//                System.out.println("INFO:\t Successfully opened socket to "+ targethost +":"+ port);
-
                 //write on the output stream (count of element in fibonacci series)
                 out = new PrintWriter(server.getOutputStream(), true);
                 out.println(fbNr);
                 out.flush();
-//                System.out.println("INFO:\t Successfully communicated with TCP server at " +
-//                        targethost +":"+ port + "--->" + tickerPeriod + "--->" + fbNr + "\n");
+//                logger.info("Successfully communicated with TCP server at " +
+//                        targetHost +":"+ port + "--->" + tickerPeriod + "--->" + fbNr + "\n");
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         }
     }
 }
