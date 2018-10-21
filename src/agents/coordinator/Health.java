@@ -28,7 +28,8 @@ public class Health {
         double newRTT = (alpha * sampleRTT) + ((1 - alpha) * RTT);
         RTT = newRTT;
 //        System.out.println("RTT = " + RTT);
-        health = (int) (newRTT / 20);
+        // Assume the range in which server is responding: 10-50ms
+        health = (int) (newRTT / (50-10));
     }
 
     public static long getRTT() {
@@ -38,6 +39,7 @@ public class Health {
             sock.connect(new InetSocketAddress("Agent-classic-balancer-public-890787002.eu-west-3.elb.amazonaws.com", 80), 2000);
             Long end = System.currentTimeMillis();
             Long duration = end - start;
+            sock.close();
             return duration;
 
         } catch (Exception e) {

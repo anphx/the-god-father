@@ -27,7 +27,7 @@ public class ArchitectAgent extends GuiAgent {
         // Make this agent terminate
         //doDelete();
 
-        logger = Helpers.getLogger("ArchitectAgent", "architectagent.log");
+        logger = Helpers.getLogger("ArchitectAgent", "logs/architectagent.log");
 
         System.out.println("===========Agent " + getLocalName() + " is up and running!===============");
         logger.info("===========Agent " + getLocalName() + " is up and running!===============");
@@ -44,50 +44,51 @@ public class ArchitectAgent extends GuiAgent {
         // Process the events according to it's type
         switch (ge.getType()) {
             case Helpers.NEW_AGENTS:
-                // Starting a number of agents in the same container by default
-                try {
-                    ArchitectAgentGui gui = (ArchitectAgentGui) ge.getSource();
-                    int nbAgent = Integer.parseInt(ge.getParameter(0).toString());
-                    String host = ge.getParameter(1).toString();
-                    int port = Integer.parseInt(ge.getParameter(2).toString());
-                    String seedName = ge.getParameter(3).toString();
-                    String serverHost = ge.getParameter(4).toString();
-                    String serverPort = ge.getParameter(5).toString();
-                    String tickerPeriod = ge.getParameter(6).toString();
-                    String fiboNb = ge.getParameter(7).toString();
-
-                    Profile profile = new ProfileImpl(host, port, null);
-                    profile.setParameter(Profile.GUI, "true");
-                    Runtime rt = Runtime.instance();
-                    System.out.println("Launching a whole in-process platform..." + profile);
-                    jade.wrapper.AgentContainer cont = rt.createAgentContainer(profile);
-
-                    for (int i = 0; i < nbAgent; i++) {
-                        try {
-                            // args: -host -port -tickerPeriod -fiboNb
-                            AgentController a = cont.createNewAgent(
-                                    seedName + "-" + i,
-                                    TcpRequestAgent.class.getName(),
-                                    new String[]{serverHost, serverPort, tickerPeriod, fiboNb});
-                            a.start();
-
-                            logger.info(" - Created agent: " + i + " - " + a.getName() +
-                            "====== on platform: " + cont.getPlatformName() +
-                            "============ in container: " + cont.getContainerName() + "\n");
-
-                            if (!allAgents.contains(cont)) allAgents.add(cont);
-
-                            Thread.sleep(50);
-                        } catch (Exception e) {
-//                            System.out.println("FAILURE: " + e.getCause());
-                            logger.throwing("ArchitectAgent", "onGuiEvent",e);
-                            System.exit(-1);
-                        }
-                    }
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-                return;
+                new Thread(new ThreadHandler(this, ge)).start();
+//                // Starting a number of agents in the same container by default
+//                try {
+//                    ArchitectAgentGui gui = (ArchitectAgentGui) ge.getSource();
+//                    int nbAgent = Integer.parseInt(ge.getParameter(0).toString());
+//                    String host = ge.getParameter(1).toString();
+//                    int port = Integer.parseInt(ge.getParameter(2).toString());
+//                    String seedName = ge.getParameter(3).toString();
+//                    String serverHost = ge.getParameter(4).toString();
+//                    String serverPort = ge.getParameter(5).toString();
+//                    String tickerPeriod = ge.getParameter(6).toString();
+//                    String fiboNb = ge.getParameter(7).toString();
+//
+//                    Profile profile = new ProfileImpl(host, port, null);
+//                    profile.setParameter(Profile.GUI, "true");
+//                    Runtime rt = Runtime.instance();
+//                    System.out.println("Launching a whole in-process platform..." + profile);
+//                    jade.wrapper.AgentContainer cont = rt.createAgentContainer(profile);
+//
+//                    for (int i = 0; i < nbAgent; i++) {
+//                        try {
+//                            // args: -host -port -tickerPeriod -fiboNb
+//                            AgentController a = cont.createNewAgent(
+//                                    seedName + "-" + i,
+//                                    TcpRequestAgent.class.getName(),
+//                                    new String[]{serverHost, serverPort, tickerPeriod, fiboNb});
+//                            a.start();
+//
+//                            logger.info(" - Created agent: " + i + " - " + a.getName() +
+//                            "====== on platform: " + cont.getPlatformName() +
+//                            "============ in container: " + cont.getContainerName() + "\n");
+//
+//                            if (!allAgents.contains(cont)) allAgents.add(cont);
+//
+//                            Thread.sleep(50);
+//                        } catch (Exception e) {
+////                            System.out.println("FAILURE: " + e.getCause());
+//                            logger.throwing("ArchitectAgent", "onGuiEvent",e);
+//                            System.exit(-1);
+//                        }
+//                    }
+//                } catch (Exception ex) {
+//                    ex.printStackTrace();
+//                }
+//                return;
             case Helpers.TERMINATE_AGENTS:
                 for (int i = 0; i < allAgents.size(); i++) {
                     try {
@@ -104,5 +105,67 @@ public class ArchitectAgent extends GuiAgent {
     public void updateHealthStatus(int health) {
         // health is in % -> status of server
         gui.updateHealthStatus(health);
+    }
+
+    class ThreadHandler implements Runnable {
+        ArchitectAgent agent;
+//        Health msg;
+        GuiEvent ge;
+
+        ThreadHandler(ArchitectAgent a, GuiEvent g) {
+            agent = a;
+            ge = g;
+//            msg = m;
+        }
+
+        public void run() {
+//            System.out.println(msg.getHealth());
+//            agent.updateHealthStatus(msg.getHealth());
+
+            // Starting a number of agents in the same container by default
+            try {
+                ArchitectAgentGui gui = (ArchitectAgentGui) ge.getSource();
+                int nbAgent = Integer.parseInt(ge.getParameter(0).toString());
+                String host = ge.getParameter(1).toString();
+                int port = Integer.parseInt(ge.getParameter(2).toString());
+                String seedName = ge.getParameter(3).toString();
+                String serverHost = ge.getParameter(4).toString();
+                String serverPort = ge.getParameter(5).toString();
+                String tickerPeriod = ge.getParameter(6).toString();
+                String fiboNb = ge.getParameter(7).toString();
+
+                Profile profile = new ProfileImpl(host, port, null);
+                profile.setParameter(Profile.GUI, "true");
+                Runtime rt = Runtime.instance();
+                System.out.println("Launching a whole in-process platform..." + profile);
+                jade.wrapper.AgentContainer cont = rt.createAgentContainer(profile);
+
+                for (int i = 0; i < nbAgent; i++) {
+                    try {
+                        // args: -host -port -tickerPeriod -fiboNb
+                        AgentController a = cont.createNewAgent(
+                                seedName + "-" + i,
+                                TcpRequestAgent.class.getName(),
+                                new String[]{serverHost, serverPort, tickerPeriod, fiboNb});
+                        a.start();
+
+                        logger.info(" - Created agent: " + i + " - " + a.getName() +
+                                "====== on platform: " + cont.getPlatformName() +
+                                "============ in container: " + cont.getContainerName() + "\n");
+
+                        if (!allAgents.contains(cont)) allAgents.add(cont);
+
+                        Thread.sleep(50);
+                    } catch (Exception e) {
+//                            System.out.println("FAILURE: " + e.getCause());
+                        logger.throwing("ArchitectAgent", "onGuiEvent",e);
+                        System.exit(-1);
+                    }
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            return;
+        }
     }
 }

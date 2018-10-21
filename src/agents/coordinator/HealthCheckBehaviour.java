@@ -1,10 +1,6 @@
 package agents.coordinator;
 
-import jade.core.Agent;
 import jade.core.behaviours.TickerBehaviour;
-import javafx.scene.shape.Arc;
-
-import javax.swing.*;
 
 public class HealthCheckBehaviour extends TickerBehaviour {
     long currentTick = 0;

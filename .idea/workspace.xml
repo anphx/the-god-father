@@ -7,24 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c35f086-c314-4cd2-b87d-de19caed6eb1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/logs/architectagent.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/serverlog.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/agents/coordinator/HealthCheckBehaviour.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/agents/utils/FileLogger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/agents/utils/GraphPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/APDescription.txt" beforeDir="false" afterPath="$PROJECT_DIR$/APDescription.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MTPs-Main-Container.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MTPs-Main-Container.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/agents/coordinator/ArchitectAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/agents/coordinator/ArchitectAgent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/agents/coordinator/ArchitectAgentGui.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/agents/coordinator/ArchitectAgentGui.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/agents/coordinator/ArchitectAgentGui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/agents/coordinator/ArchitectAgentGui.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/agents/coordinator/Health.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/agents/coordinator/Health.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/agents/coordinator/HealthCheckerAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/agents/coordinator/HealthCheckerAgent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/agents/coordinator/Helpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/agents/utils/Helpers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/agents/coordinator/TcpRequestAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/agents/coordinator/TcpRequestAgent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jars/jade.jar" beforeDir="false" afterPath="$PROJECT_DIR$/jars/jade.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jars/the-god-father.jar" beforeDir="false" afterPath="$PROJECT_DIR$/jars/the-god-father.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/agents/coordinator/HealthCheckBehaviour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/agents/coordinator/HealthCheckBehaviour.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -74,13 +60,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="7" />
-          <entry key="java" value="5879" />
+          <entry key="java" value="6048" />
           <entry key="vmoptions" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="5879" />
+          <entry key="JAVA" value="6048" />
           <entry key="PLAIN_TEXT" value="20" />
         </counts>
       </usages-collector>
@@ -91,8 +77,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/agents/coordinator/ArchitectAgentGui.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="104" column="45" selection-start-line="104" selection-start-column="45" selection-end-line="104" selection-end-column="45" />
+            <state relative-caret-position="45">
+              <caret line="85" column="27" selection-start-line="85" selection-start-column="25" selection-end-line="85" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#880#889#0" expanded="true" />
@@ -106,8 +92,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/agents/coordinator/TcpRequestAgent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-205">
-              <caret line="18" column="100" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="100" />
+            <state relative-caret-position="210">
+              <caret line="24" column="18" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -115,11 +101,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/agents/coordinator/ArchitectAgent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="87" column="41" selection-start-line="87" selection-start-column="41" selection-end-line="87" selection-end-column="41" />
+            <state relative-caret-position="323">
+              <caret line="36" column="57" selection-start-line="36" selection-start-column="57" selection-end-line="36" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -130,20 +116,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/agents/coordinator/HealthCheckBehaviour.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="38" column="14" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="540">
+              <caret line="36" column="5" selection-start-line="23" selection-start-column="4" selection-end-line="36" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/agents/coordinator/Health.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="30" column="37" lean-forward="true" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
+            <state relative-caret-position="465">
+              <caret line="31" column="42" selection-start-line="31" selection-start-column="42" selection-end-line="31" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -220,6 +203,8 @@
       <find>frc</find>
       <find>targethost</find>
       <find>system.</find>
+      <find>Agent-classic-balancer-public-890787002.eu-west-3.elb.amazonaws.com</find>
+      <find>logger</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -241,7 +226,6 @@
         <option value="$PROJECT_DIR$/src/agents/coordinator/HealthCheckAgent.java" />
         <option value="$PROJECT_DIR$/src/agents/logger/FileLogger.java" />
         <option value="$PROJECT_DIR$/src/agents/coordinator/ArchitectAgentGui.form" />
-        <option value="$PROJECT_DIR$/src/agents/coordinator/ArchitectAgent.java" />
         <option value="$PROJECT_DIR$/src/agents/utils/FileLogger.java" />
         <option value="$PROJECT_DIR$/src/agents/utils/Helpers.java" />
         <option value="$PROJECT_DIR$/logs/serverlog.log" />
@@ -251,6 +235,7 @@
         <option value="$PROJECT_DIR$/src/agents/coordinator/TcpRequestAgent.java" />
         <option value="$PROJECT_DIR$/src/agents/utils/GraphPanel.java" />
         <option value="$PROJECT_DIR$/src/agents/coordinator/Health.java" />
+        <option value="$PROJECT_DIR$/src/agents/coordinator/ArchitectAgent.java" />
       </list>
     </option>
   </component>
@@ -330,11 +315,6 @@
             <path>
               <item name="the-god-father" type="b2602c69:ProjectViewProjectNode" />
               <item name="the-god-father" type="462c0819:PsiDirectoryNode" />
-              <item name="logs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="the-god-father" type="b2602c69:ProjectViewProjectNode" />
-              <item name="the-god-father" type="462c0819:PsiDirectoryNode" />
               <item name="out" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -342,6 +322,13 @@
               <item name="the-god-father" type="462c0819:PsiDirectoryNode" />
               <item name="out" type="462c0819:PsiDirectoryNode" />
               <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="the-god-father" type="b2602c69:ProjectViewProjectNode" />
+              <item name="the-god-father" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="the_god_father_8_jar" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="the-god-father" type="b2602c69:ProjectViewProjectNode" />
@@ -368,13 +355,6 @@
               <item name="agents" type="462c0819:PsiDirectoryNode" />
               <item name="coordinator" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="the-god-father" type="b2602c69:ProjectViewProjectNode" />
-              <item name="the-god-father" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="agents" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -390,25 +370,26 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="full.screen.before.presentation.mode" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.excludes" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="agents.utils" />
       <recent name="agents" />
       <recent name="" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/jars" />
+      <recent name="$PROJECT_DIR$/src/jars" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="agents.coordinator" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/jars" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -481,7 +462,7 @@
       <workItem from="1539859583242" duration="1445000" />
       <workItem from="1540037272201" duration="5264000" />
       <workItem from="1540042955295" duration="40000" />
-      <workItem from="1540043064727" duration="10489000" />
+      <workItem from="1540043064727" duration="13249000" />
     </task>
     <servers />
   </component>
@@ -491,10 +472,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45706000" />
+    <option name="totallyTimeSpent" value="48466000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4992928" visible="true" weight="0.19951534" />
       <window_info id="Structure" order="1" sideWeight="0.5007072" side_tool="true" weight="0.19951534" />
@@ -639,16 +621,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/agents/utils/Helpers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="21" selection-start-column="21" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tcpagent.log.1">
       <provider selected="true" editor-type-id="LogFileEditorProvider">
         <state relative-caret-position="-174937">
@@ -656,31 +628,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/agents/coordinator/ArchitectAgentGui.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="104" column="45" selection-start-line="104" selection-start-column="45" selection-end-line="104" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#880#889#0" expanded="true" />
-            <element signature="e#2498#2499#0" expanded="true" />
-            <element signature="e#2525#2526#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/logs/serverlog.log">
       <provider selected="true" editor-type-id="LogFileEditorProvider" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/agents/coordinator/ArchitectAgent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="87" column="41" selection-start-line="87" selection-start-column="41" selection-end-line="87" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/agents/utils/GraphPanel.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -705,30 +654,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/agents/coordinator/TcpRequestAgent.java">
+    <entry file="file://$PROJECT_DIR$/src/agents/utils/Helpers.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-205">
-          <caret line="18" column="100" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="100" />
+        <state>
+          <caret column="21" selection-start-column="21" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/agents/coordinator/TcpRequestAgent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="24" column="18" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/agents/coordinator/ArchitectAgentGui.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="85" column="27" selection-start-line="85" selection-start-column="25" selection-end-line="85" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#880#889#0" expanded="true" />
+            <element signature="e#2498#2499#0" expanded="true" />
+            <element signature="e#2525#2526#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/agents/coordinator/HealthCheckBehaviour.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="38" column="14" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
+        <state relative-caret-position="540">
+          <caret line="36" column="5" selection-start-line="23" selection-start-column="4" selection-end-line="36" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/agents/coordinator/Health.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="42" selection-start-line="31" selection-start-column="42" selection-end-line="31" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/agents/coordinator/Health.java">
+    <entry file="file://$PROJECT_DIR$/src/agents/coordinator/ArchitectAgent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="30" column="37" lean-forward="true" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
+        <state relative-caret-position="323">
+          <caret line="36" column="57" selection-start-line="36" selection-start-column="57" selection-end-line="36" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -741,7 +720,7 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>the-god-father:jar</last-edited>
+          <last-edited>the-god-father-8:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
