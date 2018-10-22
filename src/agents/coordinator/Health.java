@@ -11,7 +11,7 @@ public class Health {
     private static Health single_instance = null;
 
     private Health() {
-        RTT = 2000;
+        RTT = 200;
         health = 100;
     }
 
@@ -29,7 +29,7 @@ public class Health {
         RTT = newRTT;
 //        System.out.println("RTT = " + RTT);
         // Assume the range in which server is responding: 10-50ms
-        health = (int) (newRTT / (50-10));
+        health = (int) (newRTT / (10));
     }
 
     public static long getRTT() {
@@ -43,12 +43,13 @@ public class Health {
             return duration;
 
         } catch (Exception e) {
-            return 2000;
+            return 200;
         }
     }
 
     public int getHealth() {
         calcHealth();
+        System.out.println(100-health);
         return (100 - health);
     }
 }
