@@ -60,7 +60,7 @@ public class GraphPanel extends JPanel {
 //        unique.addAll(Arrays.asList(data));
 //        String s = unique.toString();
 
-        float sy = PAD + ((h - 2 * PAD) - yAxis.length * sh) / 2 + lm.getAscent();
+        float sy = ((h - 2 * PAD) - yAxis.length * sh) / 2 + lm.getAscent();
 //        Iterator<Integer> iter = ((TreeSet<Integer>) unique).descendingIterator();
 //        while (iter.hasNext()) {
         for (int iter = yAxis.length - 1; iter >= 0; iter--) {
@@ -69,7 +69,7 @@ public class GraphPanel extends JPanel {
             float sw = (float) font.getStringBounds(letter, frc).getWidth();
             float sx = (PAD - sw) / 2;
             g2.drawString(letter, sx, sy);
-            sy += sh;
+            sy += sh + 2;
         }
 
 //        for(int i = 0; i < iter.size(); i++) {
@@ -109,11 +109,12 @@ public class GraphPanel extends JPanel {
     }
 
     private int getMax() {
-        int max = -Integer.MAX_VALUE;
-        for (int i = 0; i < data.length; i++) {
-            if (data[i] > max)
-                max = data[i];
-        }
+        int max = 100;
+//        int max = -Integer.MAX_VALUE;
+//        for (int i = 0; i < data.length; i++) {
+//            if (data[i] > max)
+//                max = data[i];
+//        }
         return max;
     }
 

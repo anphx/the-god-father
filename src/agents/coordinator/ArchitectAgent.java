@@ -86,7 +86,7 @@ public class ArchitectAgent extends GuiAgent {
                 Profile profile = new ProfileImpl(host, port, null);
                 profile.setParameter(Profile.GUI, "true");
                 Runtime rt = Runtime.instance();
-                System.out.println("Launching a whole in-process platform..." + profile);
+                logger.info("Launching a whole in-process platform..." + profile);
                 jade.wrapper.AgentContainer cont = rt.createAgentContainer(profile);
 
                 for (int i = 0; i < nbAgent; i++) {
