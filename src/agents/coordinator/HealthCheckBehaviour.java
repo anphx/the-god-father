@@ -15,10 +15,8 @@ public class HealthCheckBehaviour extends TickerBehaviour {
     @Override
     protected void onTick() {
         Health h = Health.getInstance();
-//        SwingUtilities.invokeLater(new ResponseHandler((ArchitectAgent)myAgent, h));
-        ResponseHandler res = new ResponseHandler(myAgent, h);
-        new Thread(res).start();
-
+        myAgent.updateHealthStatus(h.getHealth());
+//        ResponseHandler res = new ResponseHandler(myAgent, h);
     }
 
     class ResponseHandler implements Runnable {
@@ -31,7 +29,6 @@ public class HealthCheckBehaviour extends TickerBehaviour {
         }
 
         public void run() {
-//            System.out.println(msg.getHealth());
             agent.updateHealthStatus(msg.getHealth());
         }
     }
