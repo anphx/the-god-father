@@ -53,8 +53,6 @@ public class TcpRequestAgent extends Agent {
 
 //        logger = Helpers.getLogger("TcpRequestAgent", "tcpagent.log");
         addBehaviour(new SendRequest(this, tickerPeriod));
-
-        // add logging
     }
 
     public class SendRequest extends TickerBehaviour {
@@ -67,7 +65,7 @@ public class TcpRequestAgent extends Agent {
         protected void onTick() {
             try {
                 //Create new socket
-                Socket server = new Socket(targethost, port);
+                Socket server = new Socket(targetHost, port);
                 //write on the output stream (count of element in fibonacci series)
                 out = new PrintWriter(server.getOutputStream(), true);
                 out.println(fbNr);
