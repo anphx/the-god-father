@@ -60,7 +60,7 @@ public class ArchitectAgentGui {
             public void actionPerformed(ActionEvent e) {
                 GuiEvent ge = new GuiEvent(this, Helpers.TERMINATE_AGENTS);
                 myAgent.postGuiEvent(ge);
-                updateHistory("Terminate all current agents!");
+                updateHistory("Terminated all current agents!");
             }
         });
 //        isDebug.addItemListener(e -> isDebugging = (e.getStateChange() == ItemEvent.SELECTED));

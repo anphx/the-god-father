@@ -44,9 +44,11 @@ public class ArchitectAgent extends GuiAgent {
             case Helpers.NEW_AGENTS:
                 new Thread(new ThreadHandler(this, ge)).start();
             case Helpers.TERMINATE_AGENTS:
+                logger.info("all agents to terminate is " + String.valueOf(allAgents.size()));
                 for (int i = 0; i < allAgents.size(); i++) {
                     try {
                         allAgents.elementAt(i).kill();
+                        allAgents.removeElementAt(i);
                     } catch (StaleProxyException e) {
                         e.printStackTrace();
                     }
@@ -98,17 +100,18 @@ public class ArchitectAgent extends GuiAgent {
                                 new String[]{serverHost, serverPort, tickerPeriod, fiboNb});
                         a.start();
 
-                        logger.info(" - Created agent: " + i + " - " + a.getName() +
-                                "====== on platform: " + cont.getPlatformName() +
-                                "============ in container: " + cont.getContainerName() + "\n");
+//                        logger.info(" - Created agent: " + i + " - " + a.getName() +
+//                                "====== on platform: " + cont.getPlatformName() +
+//                                "============ in container: " + cont.getContainerName() + "\n");
 
-                        if (!allAgents.contains(cont)) allAgents.add(cont);
                         Thread.sleep(10);
                     } catch (Exception e) {
                         logger.throwing("ArchitectAgent", "onGuiEvent",e);
                         System.exit(-1);
                     }
                 }
+                allAgents.add(cont);
+                logger.info("Successfully created " + nbAgent + " agents");
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

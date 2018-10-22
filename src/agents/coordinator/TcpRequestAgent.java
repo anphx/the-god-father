@@ -34,6 +34,9 @@ public class TcpRequestAgent extends Agent {
             fbNr = Integer.parseInt((String) args[3]);
         }
 
+//        logger = Helpers.getLogger("TcpRequestAgent", "logs/tcpagent.log");
+//        logger.info("Params: " + tickerPeriod + " - " + fbNr + "\n");
+
         //Define agent
         DFAgentDescription dfd = new DFAgentDescription();
         ServiceDescription sd = new ServiceDescription();
@@ -51,7 +54,6 @@ public class TcpRequestAgent extends Agent {
             doDelete();
         }
 
-//        logger = Helpers.getLogger("TcpRequestAgent", "tcpagent.log");
         addBehaviour(new SendRequest(this, tickerPeriod));
     }
 
