@@ -61,25 +61,20 @@ public class TcpRequestAgent extends Agent {
 
         public SendRequest(Agent a, int period) {
             super(a, period);
-            try {
-//                System.out.println("INFO:\t Opening socket to "+ targetHost +":"+ port);
-//                logger.info("Opening socket to \"+ targetHost +\":\"+ port");
-                // open socket for this agent to connect to the TCP server
-                server  = new Socket(targetHost, port);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
 
         @Override
         protected void onTick() {
             try {
+                //Create new socket
+                Socket server = new Socket(targethost, port);
                 //write on the output stream (count of element in fibonacci series)
                 out = new PrintWriter(server.getOutputStream(), true);
                 out.println(fbNr);
                 out.flush();
-//                logger.info("Successfully communicated with TCP server at " +
-//                        targetHost +":"+ port + "--->" + tickerPeriod + "--->" + fbNr + "\n");
+                
+                //Close socket
+                server.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
