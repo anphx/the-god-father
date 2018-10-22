@@ -49,7 +49,7 @@ public class Health {
 
     public int getHealth() {
         calcHealth();
-        System.out.println(100-health);
+//        System.out.println(100-health);
         return (100 - health);
     }
 }

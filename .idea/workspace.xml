@@ -6,7 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c35f086-c314-4cd2-b87d-de19caed6eb1" name="Default Changelist" comment="" />
+    <list default="true" id="9c35f086-c314-4cd2-b87d-de19caed6eb1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/agents/coordinator/Health.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/agents/coordinator/Health.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,7 +36,7 @@
           <entry key="1" value="1" />
           <entry key="class" value="3" />
           <entry key="form" value="8" />
-          <entry key="java" value="38" />
+          <entry key="java" value="39" />
           <entry key="log" value="13" />
           <entry key="properties" value="1" />
           <entry key="txt" value="3" />
@@ -46,7 +48,7 @@
         <counts>
           <entry key="CLASS" value="3" />
           <entry key="GUI_DESIGNER_FORM" value="8" />
-          <entry key="JAVA" value="38" />
+          <entry key="JAVA" value="39" />
           <entry key="Log" value="14" />
           <entry key="PLAIN_TEXT" value="5" />
           <entry key="Properties" value="1" />
@@ -70,7 +72,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/agents/coordinator/ArchitectAgentGui.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-839">
@@ -115,6 +117,18 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-796">
               <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/agents/coordinator/Health.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="526">
+              <caret line="52" column="30" lean-forward="true" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -196,13 +210,13 @@
         <option value="$PROJECT_DIR$/src/agents/utils/Helpers.java" />
         <option value="$PROJECT_DIR$/logs/serverlog.log" />
         <option value="$PROJECT_DIR$/src/agents/coordinator/HealthCheckerAgent.java" />
-        <option value="$PROJECT_DIR$/src/agents/coordinator/Health.java" />
         <option value="$PROJECT_DIR$/src/agents/coordinator/TcpRequestAgent.java" />
         <option value="$PROJECT_DIR$/src/agents/coordinator/ArchitectAgent.java" />
         <option value="$PROJECT_DIR$/src/agents/utils/GraphPanel.java" />
         <option value="$PROJECT_DIR$/src/agents/coordinator/HealthCheckBehaviour.java" />
         <option value="$PROJECT_DIR$/src/agents/coordinator/ArchitectAgentGui.form" />
         <option value="$PROJECT_DIR$/src/agents/coordinator/ArchitectAgentGui.java" />
+        <option value="$PROJECT_DIR$/src/agents/coordinator/Health.java" />
       </list>
     </option>
   </component>
@@ -428,7 +442,7 @@
       <workItem from="1540037272201" duration="5264000" />
       <workItem from="1540042955295" duration="40000" />
       <workItem from="1540043064727" duration="13468000" />
-      <workItem from="1540119946855" duration="7317000" />
+      <workItem from="1540119946855" duration="7598000" />
     </task>
     <servers />
   </component>
@@ -438,10 +452,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56002000" />
+    <option name="totallyTimeSpent" value="56283000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4992928" visible="true" weight="0.20274636" />
       <window_info id="Structure" order="1" sideWeight="0.5007072" side_tool="true" weight="0.19951534" />
@@ -612,16 +627,6 @@
     <entry file="file://$PROJECT_DIR$/logs/serverlog.log">
       <provider selected="true" editor-type-id="LogFileEditorProvider" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/agents/coordinator/Health.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="27" selection-start-column="27" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/agents/coordinator/HealthCheckBehaviour.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -671,6 +676,16 @@
             <element signature="imports" expanded="true" />
             <element signature="e#2977#2978#0" expanded="true" />
             <element signature="e#3023#3024#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/agents/coordinator/Health.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="526">
+          <caret line="52" column="30" lean-forward="true" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
